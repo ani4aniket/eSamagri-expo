@@ -28,6 +28,29 @@ const styles = StyleSheet.create({
     marginHorizontal: "5%",
     marginTop: "7%",
   },
+  header: {
+    height: "35%",
+    backgroundColor: "#e54b4b",
+  },
+  logo: {
+    marginLeft: "2%",
+  },
+  whatsapp: {
+    color: "#20b038",
+  },
+  listButton: {
+    borderRadius: 25,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+  },
 });
 
 export default styles;
