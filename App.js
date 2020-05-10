@@ -12,6 +12,8 @@ const Stack = createStackNavigator();
 let customFonts = {
   "Poppins-Regular": require("./assets/fonts/Poppins-Regular.otf"),
   "Poppins-Light": require("./assets/fonts/Poppins-Light.otf"),
+  Roboto: require("native-base/Fonts/Roboto.ttf"),
+  Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
 };
 
 class App extends React.Component {
