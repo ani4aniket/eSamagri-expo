@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Home from "./src/screens/Home/Home";
 import Profile from "./src/screens/Profile/Profile";
+import YourList from "./src/screens/YourList/YourList";
 
 const Stack = createStackNavigator();
 
@@ -32,9 +33,10 @@ class App extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Profile" headerMode="none">
-            <Stack.Screen name="Home" component={Home}/>
-            <Stack.Screen name="Profile" component={Profile}/>
+          <Stack.Navigator initialRouteName="YourList" headerMode="none">
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="YourList" component={YourList} />
           </Stack.Navigator>
         </NavigationContainer>
       );
