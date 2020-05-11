@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     borderWidth: 0,
   },
-  profilePicture: {
+  heading: {
     width: "100%",
     height: 25,
     color: "#121212",

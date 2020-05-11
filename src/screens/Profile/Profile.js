@@ -50,7 +50,7 @@ class Profile extends Component {
     return (
       <View style={styles.container}>
         <HeaderBack heading="User Profile" />
-        <Text style={styles.profilePicture}>Profile Picture</Text>
+        <Text style={styles.heading}>Profile Picture</Text>
 
         <View style={styles.imgContainer}>
           <ImageBackground
@@ -103,12 +103,12 @@ class Profile extends Component {
           </CardItem>
         </Card>
 
-        <Text style={styles.profilePicture}>Order Summary</Text>
+        <Text style={styles.heading}>Order Summary</Text>
         <Card style={styles.card}>
           <View style={styles.orderContainer}>{renderCol}</View>
         </Card>
 
-        <Text style={styles.profilePicture}>Account Setting</Text>
+        <Text style={styles.heading}>Account Setting</Text>
         <Card style={styles.card}>
           <CardItem>
             <Body>
