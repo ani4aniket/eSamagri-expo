@@ -1,134 +1,169 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        borderColor: "#000000",
-        borderWidth: 0
-      },
-      rect: {
-        width: "100%",
-        height: "10%",
-        backgroundColor: "#5B7EFB"
+  container: {
+    flex: 1,
+    borderColor: "#000000",
+    borderWidth: 0,
+  },
+  profilePicture: {
+    width: "100%",
+    height: 25,
+    color: "#121212",
+    fontSize: 17,
+    fontFamily: "Poppins-Regular",
+    fontWeight: "bold",
+    marginTop: "2%",
+    marginHorizontal: "5%",
+  },
+  personalDetailsRow: {
+    marginHorizontal: "5%",
+    marginVertical: 1,
+    height: 20,
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  personalDetails: {
+    width: 140,
+    height: 20,
+    color: "#121212",
+    fontSize: 17,
+    fontWeight: "bold",
+    fontFamily: "Poppins-Regular",
+    marginTop: 2,
+  },
+  iconEdit: {
+    color: "rgba(82,113,194,1)",
+    fontSize: 17,
+    marginLeft: "1%",
+    marginTop: -20,
+  },
+  imgContainer: {
+    width: "100%",
+    height: "12%",
+    // alignItems:"center",
+  },
+  image: {
+    width: 144,
+    height: 144,
+    borderRadius: 100,
+    borderColor: "#000000",
+    borderWidth: 1,
+    marginTop: "2%",
+    alignSelf: "center",
+    overflow: "hidden",
+  },
+  image_imageStyle: {
+    width: 142,
+    height: 142,
+  },
+  camera: {
+    width: 34,
+    height: 34,
+    marginTop: "4%",
+    marginLeft: "57%",
+    // justifyContent: "center",
+  },
+  ellipse: {
+    width: 34,
+    height: 34,
+    position: "absolute",
+  },
+  icon: {
+    top: 9,
+    left: 8,
+    position: "absolute",
+    color: "rgba(0,0,0,1)",
+    fontSize: 17,
+  },
+  ellipseStack: {
+    width: 34,
+    height: 34,
+  },
+  card: {
+    width: "90%",
+    height: "16%",
+    marginTop: "2%",
+    marginHorizontal: "5%",
+    alignSelf: "center",
+    borderRadius: 5,
+  },
+  data_table: {
+    marginHorizontal: "5%",
+    marginVertical: "1%",
+    textAlign: "center",
+  },
+  data_row: {
+    width: "100%",
+    height: 20,
+    flexDirection: "row",
+  },
+  key: {
+    width: "30%",
+    height: 25,
+    fontWeight: "600",
+    position: "absolute",
+    fontSize: 14,
+    fontFamily: "Poppins-Regular",
+  },
+  value: {
+    marginLeft: "30%",
+    width: "70%",
+    height: 25,
+    position: "absolute",
+    fontSize: 14,
+    fontFamily: "Poppins-Regular",
+    color: "#828282",
+  },
 
-      },
-      profilePicture: {
-        width: 120,
-        height: 20,
-        color: "#121212",
-        fontSize: 17,
-        fontFamily: "Poppins-Regular",
-        fontWeight: "bold",
-        marginTop: "2%",
-        marginLeft: 17
-      },
-      personalDetails: {
-        width: 140,
-        height: 20,
-        color: "#121212",
-        fontSize: 17,
-        fontWeight: "bold",
-        fontFamily: "Poppins-Regular",
-        marginTop: 2
-      },
-      iconEdit: {
-        color: "rgba(82,113,194,1)",
-        fontSize: 17,
-        marginLeft: "1%",
-        marginTop: "1%"
-      },
-      personalDetailsRow: {
-        marginHorizontal: "5%",
-        marginVertical: 1,
-        height: 20,
-        flexDirection: "row",
-        marginTop: 20,
-      },
-      imgContainer:{
-        width:"100%",
-        height: "12%",
-        alignItems:"center",
-      },
-      image: {
-        width: 144,
-        height: 144,
-        borderRadius: 100,
-        borderColor: "#000000",
-        borderWidth: 1,
-        marginTop: "2%",
-        
-        // marginLeft: "35%",
-        overflow: "hidden"
-      },
-      image_imageStyle: {
-        width: 142,
-        height: 142
-      },
-      camera: {
-        width: 34,
-        height: 34,
-        marginTop: "4%",
-        marginLeft: "57%"
-      },
-      ellipse: {
-        top: 0,
-        left: 0,
-        width: 34,
-        height: 34,
-        position: "absolute"
-      },
-      icon: {
-        top: 9,
-        left: 8,
-        position: "absolute",
-        color: "rgba(0,0,0,1)",
-        fontSize: 17
-      },
-      ellipseStack: {
-        width: 34,
-        height: 34
-      },
-      rect2: {
-        width: "90%",
-        height: 140,
-        marginTop: "5%",
-        alignSelf: "center",
-        borderRadius: 5,
-      },
-      data_table: {
-        // margin: "0 auto",
-        marginTop: 5,
-        textAlign: "center",
-      },
-      data_row: {
-        width: 219,
-        height: 19,
-        marginTop: 2,
-        marginLeft: 16
-      },
-      key: {
-        top: 0,
-        left: 0,
-        width: "30%",
-        height: 20,
-        color: "#121212",
-        fontWeight:"bold",
-        position: "absolute",
-        fontSize: 12,
-        fontFamily: "Poppins-Regular"
-      },
-      value: {
-        top: 0,
-        left: 109,
-        // margin: '0 auto',
-        width: "70%",
-        height: 20,
-        color: "#121212",
-        position: "absolute",
-        fontSize: 12,
-        fontFamily: "Poppins-Regular"
-      },
-      
+  changePassword: {
+    width: "100%",
+    height: 20,
+    fontWeight: "600",
+    fontSize: 14,
+    fontFamily: "Poppins-Regular",
+    marginVertical: "2%",
+  },
+  innerContainer: {
+    width: "100%",
+    height: 50,
+    flexDirection: "row",
+    marginLeft: "5%",
+  },
+  passDescription: {
+    flex: 1,
+    // width: calc("100%" - 160),
+    height: 50,
+    color: "#828282",
+    textAlign: "justify",
+    fontSize: 12,
+  },
+  btn: {
+    width: 160,
+    height: 30,
+    backgroundColor: "rgba(222,54,54,1)",
+    borderRadius: 10,
+    flexDirection: "row",
+    alignSelf: "center",
+    marginHorizontal: "3%",
+  },
+  iconKey: {
+    marginLeft: 7,
+    // position: "absolute",
+    color: "rgba(255,255,255,1)",
+    fontSize: 20,
+    height: 20,
+    width: "20%",
+  },
+  btn_text: {
+    height: 30,
+    width: "80%",
+    textAlignVertical: "center",
+    color: "rgba(255,255,255,1)",
+    fontSize: 12,
+    fontFamily: "Poppins-Regular",
+    textAlign: "left",
+  },
 });
 
 export default styles;
