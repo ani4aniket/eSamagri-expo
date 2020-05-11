@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "90%",
-    height: "16%",
     marginTop: "2%",
     marginHorizontal: "5%",
     alignSelf: "center",
@@ -105,6 +104,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 14,
     fontFamily: "Poppins-Regular",
+    color: "#828282",
   },
   value: {
     marginLeft: "30%",
@@ -113,7 +113,35 @@ const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 14,
     fontFamily: "Poppins-Regular",
+  },
+
+  orderContainer: {
+    marginHorizontal: "5%",
+    marginVertical: "2%",
+    display: "flex",
+    flexDirection: "row",
+    alignSelf: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
+  },
+  orderCol: {
+    flex: 1,
+    flexDirection: "column",
+    alignSelf: "center",
+    marginBottom: "3%",
+  },
+  orderKey: {
+    fontWeight: "600",
+    fontSize: 14,
+    fontFamily: "Poppins-Regular",
+    alignSelf: "center",
     color: "#828282",
+  },
+  orderValue: {
+    fontSize: 17,
+    fontFamily: "Poppins-Regular",
+    fontWeight: "bold",
+    alignSelf: "center",
   },
 
   changePassword: {
@@ -132,7 +160,6 @@ const styles = StyleSheet.create({
   },
   passDescription: {
     flex: 1,
-    // width: calc("100%" - 160),
     height: 50,
     color: "#828282",
     textAlign: "justify",
@@ -145,7 +172,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: "row",
     alignSelf: "center",
-    marginHorizontal: "3%",
+    marginHorizontal: "5%",
   },
   iconKey: {
     marginLeft: 7,

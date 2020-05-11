@@ -16,7 +16,7 @@ class HeaderBack extends Component {
               name="arrow-left"
             ></MaterialCommunityIconsIcon>
           </Button>
-          <Text style={styles.userProfile}>User Profile</Text>
+          <Text style={styles.userProfile}>{this.props.heading}</Text>
           <Button transparent style={styles.iconWrapper}>
             <EntypoIcon
               style={styles.icon}

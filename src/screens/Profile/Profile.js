@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, ImageBackground } from "react-native";
+import { View, Text, Image, ImageBackground, FlatList } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import Icon from "react-native-vector-icons/Entypo";
 import Svg, { Ellipse } from "react-native-svg";
@@ -8,15 +8,48 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 
 import styles from "./styles";
 import HeaderBack from "../../components/HeaderBack/HeaderBack";
+
+const data = [
+  { id: 1, key: "Name", value: "Rajesh Verma" },
+  { id: 2, key: "Birthday", value: "08 May, 1997" },
+  { id: 3, key: "Mobile No", value: "+91-64789 24321" },
+  { id: 4, key: "Gender", value: "Male" },
+  { id: 5, key: "Email", value: "rajeshverma234@gmail.com" },
+];
+const itemdata = [
+  { id: 1, key: "Shops Explored", value: "10" },
+  { id: 2, key: "Lists Sent", value: "37	" },
+  { id: 3, key: "Item Bought", value: "136" },
+];
+
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+
   render() {
+    const renderRow = data.map((item) => {
+      return (
+        <View style={styles.data_row} key={item.id}>
+          <Text style={styles.key}>{item.key}</Text>
+          <Text style={styles.value}>{item.value}</Text>
+        </View>
+      );
+    });
+
+    const renderCol = itemdata.map((item) => {
+      return (
+        <View style={styles.orderCol} key={item.id}>
+          <Text style={styles.orderKey}>{item.key}</Text>
+          <Text style={styles.orderValue}>{item.value}</Text>
+        </View>
+      );
+    });
+
     return (
       <View style={styles.container}>
-        <HeaderBack />
+        <HeaderBack heading="User Profile" />
         <Text style={styles.profilePicture}>Profile Picture</Text>
 
         <View style={styles.imgContainer}>
@@ -57,30 +90,24 @@ class Profile extends Component {
           <CardItem>
             <Body>
               <View style={styles.data_table}>
-                <View style={styles.data_row}>
-                  <Text style={styles.key}>Name</Text>
-                  <Text style={styles.value}>Rajesh Verma</Text>
-                </View>
-                <View style={styles.data_row}>
-                  <Text style={styles.key}>Birthday</Text>
-                  <Text style={styles.value}>08 May, 1997</Text>
-                </View>
-                <View style={styles.data_row}>
-                  <Text style={styles.key}>Gender</Text>
-                  <Text style={styles.value}>Male</Text>
-                </View>
-                <View style={styles.data_row}>
-                  <Text style={styles.key}>Mobile No</Text>
-                  <Text style={styles.value}>+91-67348 83425</Text>
-                </View>
-                <View style={styles.data_row}>
-                  <Text style={styles.key}>Email</Text>
-                  <Text style={styles.value}>rajesh2971@gmail.com</Text>
-                </View>
+                {renderRow}
+                {/* <FlatList
+                  data={data}
+                  renderItem={({ item }) => {
+                    return renderRow(item);
+                  }}
+                  keyExtractor={(item) => `${item.id}`}
+                ></FlatList> */}
               </View>
             </Body>
           </CardItem>
         </Card>
+
+        <Text style={styles.profilePicture}>Order Summary</Text>
+        <Card style={styles.card}>
+          <View style={styles.orderContainer}>{renderCol}</View>
+        </Card>
+
         <Text style={styles.profilePicture}>Account Setting</Text>
         <Card style={styles.card}>
           <CardItem>
