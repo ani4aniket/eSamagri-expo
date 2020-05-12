@@ -5,7 +5,6 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Home from "./src/screens/Home/Home";
 import Welcome from "./src/screens/Welcome/Welcome";
@@ -15,6 +14,8 @@ import Signup from "./src/screens/Auth/Signup";
 
 import { Block } from "./src/components";
 import Order from "./src/screens/Order/Order";
+import Profile from "./src/screens/Profile/Profile";
+import YourList from "./src/screens/YourList/YourList";
 
 const Stack = createStackNavigator();
 
@@ -61,6 +62,8 @@ class App extends React.Component {
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="Forgot" component={Forgot} />
               <Stack.Screen name="Order" component={Order} />
+			  <Stack.Screen name="Profile" component={Profile} />
+            	<Stack.Screen name="YourList" component={YourList} />
             </Stack.Navigator>
           </NavigationContainer>
         </Block>
