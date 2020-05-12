@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Image, StyleSheet, Alert } from "react-native";
+import { Button } from "native-base";
 
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -9,7 +10,7 @@ import Logo from "./Logo/Logo";
 import WhatsappIcon from "./Logo/WhatsappIcon";
 
 import PopupMenu from "./PopUp";
-import { Button, Text } from "../components";
+import { Text } from "../components";
 
 const AppHeader = (props) => {
   return (
@@ -20,42 +21,29 @@ const AppHeader = (props) => {
       style={styles.headerContainer}
     >
       <View style={styles.titleView}>
-        {props.showBackIcon ? (
-          <Icon
-            type="Entypo"
-            name="chevron-left"
-            style={{ marginTop: 5, fontSize: 24, color: "white" }}
-            onPress={() => {}}
-          />
-        ) : null}
-
         <Logo />
       </View>
 
       <View style={styles.profileView}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity style={styles.whatsapp} onPress={() => {}}>
           <WhatsappIcon />
         </TouchableOpacity>
-
-        {props.list ? (
-          <Button style={styles.listBtn} onPress={() => {}}>
-            <Text center bold color={theme.colors.black}>
-              My Lists
-            </Text>
-          </Button>
-        ) : null}
-        {props.menu ? (
-          <View>
-            <PopupMenu actions={["Logout"]} onPress={() => {}} />
+        <Button style={styles.btn} transparent onPress={() => {}}>
+          <View style={styles.listBtn}>
+            <Text style={styles.text}>My Lists</Text>
           </View>
-        ) : (
-          <TouchableOpacity style={styles.profileButton} onPress={() => {}}>
-            <Image
-              source={require("../../assets/images/avatar.png")}
-              style={styles.profileImage}
-            />
-          </TouchableOpacity>
-        )}
+        </Button>
+        <View style={styles.popupMenu}>
+          <PopupMenu
+            actions={[
+              "User Profile",
+              "Share the app",
+              "About Us",
+              "Terms & condition",
+            ]}
+            onPress={() => {}}
+          />
+        </View>
       </View>
     </LinearGradient>
   );
@@ -67,53 +55,30 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     width: "100%",
-    flex: 1,
-    // height: 10,
+    alignItems: "center",
+    paddingVertical: "1%",
   },
   titleView: {
-    flexDirection: "row",
-    width: "60%",
+    flex: 10,
     justifyContent: "flex-start",
-    alignItems: "center",
     paddingLeft: "3%",
   },
   profileView: {
+    flex: 6,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    width: "40%",
   },
-  titleText: {
-    color: "#fff",
-    fontSize: 20,
-    textAlign: "center",
-    marginLeft: "10%",
-    fontFamily: "Poppins-Regular",
-    marginBottom: "2%",
+  whatsapp: {
+    justifyContent: "flex-start",
+    flex: 1,
   },
-  profileButton: {
-    height: 35,
-    width: 35,
-    borderRadius: 35,
-    backgroundColor: "#fff",
-    marginLeft: "15%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  profileImage: {
-    height: "100%",
-    width: "100%",
-  },
-  ml20: {
-    marginLeft: "20%",
-  },
-  ml15: {
-    marginLeft: "15%",
+  btn: {
+    flex: 2,
   },
   listBtn: {
-    marginHorizontal: 10,
-    height: 30,
-    paddingHorizontal: 5,
+    justifyContent: "center",
+    backgroundColor: "#fff",
     borderRadius: 25,
     shadowColor: "#fff",
     shadowOffset: {
@@ -122,7 +87,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
-
     elevation: 7,
+  },
+  text: {
+    fontWeight: "bold",
+    color: theme.colors.black,
+    marginHorizontal: "12%",
+    marginVertical: "7%",
   },
 });
