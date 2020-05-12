@@ -29,7 +29,7 @@ const data = [
     Status: "Order Packed",
   },
   {
-    id: 1,
+    id: 3,
     ShopKeeper: "Rajesh Verma",
     ShopName: "Rajesh Kirana Store",
     Img: "image-url",
@@ -39,7 +39,7 @@ const data = [
     Status: "Billing Pending",
   },
   {
-    idx: 2,
+    idx: 4,
     ShopKeeper: "Laljee Bhai",
     ShopName: "LalJee Kirana Store",
     Img: "image-url",
@@ -49,7 +49,7 @@ const data = [
     Status: "Order Packed",
   },
   {
-    id: 1,
+    id: 5,
     ShopKeeper: "Rajesh Verma",
     ShopName: "Rajesh Kirana Store",
     Img: "image-url",
@@ -59,7 +59,7 @@ const data = [
     Status: "Billing Pending",
   },
   {
-    idx: 2,
+    idx: 6,
     ShopKeeper: "Laljee Bhai",
     ShopName: "LalJee Kirana Store",
     Img: "image-url",
@@ -109,7 +109,7 @@ class YourList extends Component {
                   </View>
                   <View style={styles.row2}>
                     <View style={styles.col1}>
-                      <Text style={styles.text}>Total Items</Text>
+                      <Text style={styles.key}>Total Items</Text>
                       <Text style={styles.number}>{item.TotalItems}</Text>
                     </View>
                     <View style={styles.col2}>

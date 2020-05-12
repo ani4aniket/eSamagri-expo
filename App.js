@@ -33,7 +33,7 @@ class App extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="YourList" headerMode="none">
+          <Stack.Navigator initialRouteName="Profile" headerMode="none">
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="YourList" component={YourList} />

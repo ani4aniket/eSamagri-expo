@@ -19,29 +19,26 @@ const styles = StyleSheet.create({
   personalDetailsRow: {
     marginHorizontal: "5%",
     marginVertical: 1,
-    height: 20,
     flexDirection: "row",
-    marginTop: 20,
+    width: "100%",
   },
   personalDetails: {
-    width: 140,
-    height: 20,
     color: "#121212",
     fontSize: 17,
     fontWeight: "bold",
     fontFamily: "Poppins-Regular",
     marginTop: 2,
   },
+  edit: {
+    marginLeft: "5%",
+    marginTop: -10,
+  },
   iconEdit: {
     color: "rgba(82,113,194,1)",
     fontSize: 17,
-    marginLeft: "1%",
-    marginTop: -20,
   },
   imgContainer: {
     width: "100%",
-    height: "12%",
-    // alignItems:"center",
   },
   image: {
     width: 144,
@@ -60,9 +57,8 @@ const styles = StyleSheet.create({
   camera: {
     width: 34,
     height: 34,
-    marginTop: "4%",
-    marginLeft: "57%",
-    // justifyContent: "center",
+    marginTop: -30,
+    marginLeft: "55%",
   },
   ellipse: {
     width: 34,
@@ -82,7 +78,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "90%",
-    marginTop: "2%",
+    marginTop: 1,
     marginHorizontal: "5%",
     alignSelf: "center",
     borderRadius: 5,
@@ -98,20 +94,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   key: {
-    width: "30%",
-    height: 25,
+    flex: 2,
     fontWeight: "600",
-    position: "absolute",
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: "Poppins-Regular",
     color: "#828282",
   },
   value: {
-    marginLeft: "30%",
-    width: "70%",
-    height: 25,
-    position: "absolute",
-    fontSize: 14,
+    flex: 5,
+    fontSize: 12,
     fontFamily: "Poppins-Regular",
   },
 
@@ -121,8 +112,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignSelf: "center",
-    // justifyContent: "center",
-    // alignItems: "center",
   },
   orderCol: {
     flex: 1,
@@ -132,7 +121,7 @@ const styles = StyleSheet.create({
   },
   orderKey: {
     fontWeight: "600",
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: "Poppins-Regular",
     alignSelf: "center",
     color: "#828282",
@@ -154,19 +143,16 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     width: "100%",
-    height: 50,
     flexDirection: "row",
     marginLeft: "5%",
   },
   passDescription: {
     flex: 1,
-    height: 50,
     color: "#828282",
-    textAlign: "justify",
     fontSize: 12,
   },
   btn: {
-    width: 160,
+    width: 100,
     height: 30,
     backgroundColor: "rgba(222,54,54,1)",
     borderRadius: 10,
@@ -175,8 +161,7 @@ const styles = StyleSheet.create({
     marginHorizontal: "5%",
   },
   iconKey: {
-    marginLeft: 7,
-    // position: "absolute",
+    marginLeft: 5,
     color: "rgba(255,255,255,1)",
     fontSize: 20,
     height: 20,
@@ -188,8 +173,9 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     color: "rgba(255,255,255,1)",
     fontSize: 12,
+    marginLeft: "7%",
     fontFamily: "Poppins-Regular",
-    textAlign: "left",
+    textAlign: "center",
   },
 });
 
