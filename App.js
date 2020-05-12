@@ -14,6 +14,7 @@ import Forgot from "./src/screens/Auth/Forgot";
 import Signup from "./src/screens/Auth/Signup";
 
 import { Block } from "./src/components";
+import Order from "./src/screens/Order/Order";
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,7 @@ class App extends React.Component {
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="Forgot" component={Forgot} />
+              <Stack.Screen name="Order" component={Order} />
             </Stack.Navigator>
           </NavigationContainer>
         </Block>
