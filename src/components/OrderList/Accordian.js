@@ -8,9 +8,13 @@ import {
   LayoutAnimation,
   Platform,
   UIManager,
+  Modal,
+  Alert,
 } from "react-native";
 import { Colors } from "./colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
+
+import Cart from "../Cart/Cart";
 
 export default class Accordian extends Component {
   constructor(props) {
@@ -18,12 +22,38 @@ export default class Accordian extends Component {
     this.state = {
       data: props.data,
       expanded: false,
+      modalVisible: false,
     };
 
     if (Platform.OS === "android") {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
   }
+  setModalVisible = (visible) => {
+    this.setState({ modalVisible: visible });
+  };
+  onClick = (index) => {
+    const temp = this.state.data.slice();
+    temp[index].value = !temp[index].value;
+    this.setState({ data: temp });
+  };
+
+  toggleExpand = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    this.setState({ expanded: !this.state.expanded });
+  };
+
+  cartBuilderModal = () => {
+    return (
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.state.modalVisible}
+      >
+        <Cart done={this.setModalVisible} />
+      </Modal>
+    );
+  };
 
   render() {
     return (
@@ -41,6 +71,7 @@ export default class Accordian extends Component {
             color={Colors.DARKGRAY}
           />
         </TouchableOpacity>
+        {this.cartBuilderModal()}
         <View style={styles.parentHr} />
         {this.state.expanded && (
           <View style={{}}>
@@ -50,23 +81,39 @@ export default class Accordian extends Component {
               scrollEnabled={false}
               renderItem={({ item, index }) => (
                 <View>
-                  <TouchableOpacity
+                  <View
                     style={[
                       styles.childRow,
                       styles.button,
                       item.value ? styles.btnActive : styles.btnInActive,
                     ]}
-                    onPress={() => this.onClick(index)}
                   >
                     <Text style={[styles.font, styles.itemInActive]}>
                       {item.key}
                     </Text>
-                    <Icon
-                      name={"check-circle"}
-                      size={24}
-                      color={item.value ? Colors.GREEN : Colors.LIGHTGRAY}
-                    />
-                  </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.setModalVisible()}>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          borderWidth: 1,
+                          borderColor: "green",
+                          backgroundColor: "#0da935",
+                          borderRadius: 5,
+                        }}
+                      >
+                        <Text
+                          style={{
+                            paddingHorizontal: 7,
+                            paddingVertical: 3,
+                            color: "#fff",
+                            fontSize: 13,
+                          }}
+                        >
+                          Choose
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
                   <View style={styles.childHr} />
                 </View>
               )}
@@ -76,17 +123,6 @@ export default class Accordian extends Component {
       </View>
     );
   }
-
-  onClick = (index) => {
-    const temp = this.state.data.slice();
-    temp[index].value = !temp[index].value;
-    this.setState({ data: temp });
-  };
-
-  toggleExpand = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    this.setState({ expanded: !this.state.expanded });
-  };
 }
 
 const styles = StyleSheet.create({
@@ -131,8 +167,6 @@ const styles = StyleSheet.create({
     paddingRight: 18,
     alignItems: "center",
     backgroundColor: Colors.WHITE,
-    // borderBottomColor: Colors.CGRAY,
-    // borderBottomWidth: 1,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
