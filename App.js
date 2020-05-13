@@ -22,6 +22,8 @@ const Stack = createStackNavigator();
 let customFonts = {
   "Poppins-Regular": require("./assets/fonts/Poppins-Regular.otf"),
   "Poppins-Light": require("./assets/fonts/Poppins-Light.otf"),
+  "Poppins-Medium": require("./assets/fonts/Poppins-Medium.otf"),
+
   Roboto: require("native-base/Fonts/Roboto.ttf"),
   Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
 };
@@ -46,7 +48,7 @@ class App extends React.Component {
         <Block white>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="Welcome"
+              initialRouteName="Order"
               headerMode="none"
               screenOptions={{
                 headerStyle: {},
@@ -62,8 +64,8 @@ class App extends React.Component {
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="Forgot" component={Forgot} />
               <Stack.Screen name="Order" component={Order} />
-			  <Stack.Screen name="Profile" component={Profile} />
-            	<Stack.Screen name="YourList" component={YourList} />
+              <Stack.Screen name="Profile" component={Profile} />
+              <Stack.Screen name="YourList" component={YourList} />
             </Stack.Navigator>
           </NavigationContainer>
         </Block>

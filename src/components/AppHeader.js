@@ -28,20 +28,23 @@ const AppHeader = (props) => {
         <TouchableOpacity style={styles.whatsapp} onPress={() => {}}>
           <WhatsappIcon />
         </TouchableOpacity>
-        <Button style={styles.btn} transparent onPress={() => {}}>
+        <Button
+          style={styles.btn}
+          transparent
+          onPress={() => {
+            props.navigation.navigate("YourList");
+          }}
+        >
           <View style={styles.listBtn}>
             <Text style={styles.text}>My Lists</Text>
           </View>
         </Button>
         <View style={styles.popupMenu}>
           <PopupMenu
-            actions={[
-              "User Profile",
-              "Share the app",
-              "About Us",
-              "Terms & condition",
-            ]}
-            onPress={() => {}}
+            actions={["Your Profile", "Share the app", "About Us"]}
+            onPress={() => {
+              console.log("hihi");
+            }}
           />
         </View>
       </View>

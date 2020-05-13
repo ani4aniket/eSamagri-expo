@@ -7,10 +7,15 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import styles from "./styles";
 class HeaderBack extends Component {
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.header}>
         <View style={styles.header_container}>
-          <Button transparent style={styles.iconWrapper}>
+          <Button
+            transparent
+            style={styles.iconWrapper}
+            onPress={() => navigation.goBack()}
+          >
             <MaterialCommunityIconsIcon
               style={styles.icon}
               name="arrow-left"

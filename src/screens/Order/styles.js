@@ -4,13 +4,12 @@ import Constants from "expo-constants";
 const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  statusBar: {
     marginTop: Constants.statusBarHeight,
+    backgroundColor: "transparent",
   },
   header: {},
   stepsContainer: {
-    position: "absolute",
     bottom: theme.sizes.base * 3,
     right: 0,
     left: 0,
@@ -22,13 +21,28 @@ const styles = StyleSheet.create({
     marginHorizontal: 2.5,
   },
   photos: {
-    flexDirection: "column",
+    // flex: 1,
+    // position: "relative",
+    // left: 0,
+    // top: 0,
+    // width: width,
+  },
+  nameBar: {
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  storeName: {
+    fontFamily: "Poppins-Regular",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "rgb(255, 255, 255)",
+  },
+  storeNameParent: {
     flex: 1,
-    position: "absolute",
-    left: 0,
-    top: 0,
-
-    width: width,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

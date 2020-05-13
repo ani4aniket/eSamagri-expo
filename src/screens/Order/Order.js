@@ -10,16 +10,38 @@ import {
   View,
 } from "react-native";
 
+import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import { Button } from "native-base";
+
 import styles from "./styles";
 
 const { width, height } = Dimensions.get("window");
 
-import { Button, Block, Text } from "../../components";
+import { Block, Text } from "../../components";
+import ShopCard from "../../components/ShopCard/ShopCard";
+import Constants from "expo-constants";
+import OrderList from "../../components/OrderList/OrderList";
 
+const StatusBarHeight = Constants.statusBarHeight;
 class Order extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      item: {
+        id: 2,
+        ShopKeeper: "Lalji Pandey",
+        Img: "image-url",
+        ShopId: "DAL004",
+        ShopName: "Lalji Babu Kirana Store",
+        Rating: "4.1",
+        Review: "104",
+        Tag: ["Grocery", "Food"],
+        Adress: "8584 W Sherman Dr undefined Desoto, Oklahoma, India",
+        Hours: "open",
+        closes: "8:30 PM",
+        Status: "Accepting List",
+      },
+    };
   }
   scrollX = new Animated.Value(0);
 
@@ -39,7 +61,7 @@ class Order extends Component {
         renderItem={({ item }) => (
           <Image
             source={item.source}
-            resizeMode="contain"
+            resizeMode="cover"
             style={{ width, height: height / 3, overflow: "visible" }}
           />
         )}
@@ -67,7 +89,7 @@ class Order extends Component {
               animated
               flex={false}
               key={`step-${index}`}
-              color="gray"
+              color="white"
               style={[styles.steps, { opacity }]}
             />
           );
@@ -77,20 +99,48 @@ class Order extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
     return (
-      <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.statusBar}></View>
         <View style={styles.photos}>
-          {this.renderIllustrations()}
-          {this.renderSteps()}
+          <View style={styles.nameBar}>
+            <Button transparent onPress={() => navigation.goBack()}>
+              <MaterialCommunityIconsIcon
+                style={{ color: "rgba(255, 255, 255,0.9)", fontSize: 25 }}
+                name="arrow-left"
+              ></MaterialCommunityIconsIcon>
+            </Button>
+            <View style={styles.storeNameParent}>
+              <Text style={styles.storeName}>{this.state.item.ShopName}</Text>
+            </View>
+          </View>
+          <View
+            style={{
+              position: "absolute",
+              //   top: "-15%",
+              backgroundColor: "rgba(0, 0, 0, 0.4)",
+            }}
+          >
+            {this.renderIllustrations()}
+            {this.renderSteps()}
+          </View>
         </View>
-      </View>
+
+        <View style={{ marginTop: height / 3 - 25 - StatusBarHeight }}>
+          <ShopCard item={this.state.item} />
+        </View>
+        <View style={{ justifyContent: "flex-start" }}>
+          <OrderList />
+        </View>
+      </ScrollView>
     );
   }
 }
 
 Order.defaultProps = {
   illustrations: [
-    { id: 1, source: require("../../../assets/images/illustration_1.png") },
+    { id: 1, source: require("../../../assets/images/Rectangle.png") },
     { id: 2, source: require("../../../assets/images/illustration_2.png") },
     { id: 3, source: require("../../../assets/images/illustration_3.png") },
   ],

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: "rgba(255,255,255,1)",
-    fontSize: 20,
+    fontSize: 25,
   },
   iconWrapper: {
     flex: 1,
