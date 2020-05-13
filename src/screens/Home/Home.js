@@ -1,26 +1,18 @@
 import React, { Component } from "react";
-
 import {
-  Image,
-  StatusBar,
   KeyboardAvoidingView,
   TextInput,
-  ScrollView,
   Dimensions,
-  StyleSheet,
   View,
   TouchableOpacity,
 } from "react-native";
-
+import Icon from "react-native-vector-icons/MaterialIcons";
 import Constants from "expo-constants";
 
 import AppHeader from "../../components/AppHeader";
 import { Block, Card, Badge, Button, Text } from "../../components";
-import { theme } from "../../constants";
 import ShopCard from "../../components/ShopCard/ShopCard";
-
 import styles from "./styles";
-import Icon from "react-native-vector-icons/MaterialIcons";
 
 const { width } = Dimensions.get("window");
 

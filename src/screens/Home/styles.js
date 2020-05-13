@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     flexDirection: "row",
     alignItems: "center",
-    // paddingBottom: "4%",
   },
   wrapper: {
     flexDirection: "row",
