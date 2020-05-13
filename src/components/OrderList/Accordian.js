@@ -15,6 +15,7 @@ import { Colors } from "./colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 import Cart from "../Cart/Cart";
+import { theme } from "../../constants";
 
 export default class Accordian extends Component {
   constructor(props) {
@@ -95,9 +96,7 @@ export default class Accordian extends Component {
                       <View
                         style={{
                           flexDirection: "row",
-                          borderWidth: 1,
-                          borderColor: "green",
-                          backgroundColor: "#0da935",
+                          backgroundColor: theme.colors.primary,
                           borderRadius: 5,
                         }}
                       >

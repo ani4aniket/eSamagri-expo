@@ -18,7 +18,7 @@ import styles from "./styles";
 const { width, height } = Dimensions.get("window");
 
 import { Block, Text } from "../../components";
-import ShopCard from "../../components/ShopCard/ShopCard";
+import ShopProfileCard from "../../components/ShopProfileCard/ShopProfileCard";
 import Constants from "expo-constants";
 import OrderList from "../../components/OrderList/OrderList";
 
@@ -27,8 +27,7 @@ class Order extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: {
-        id: 2,
+      shopInfo: {
         ShopKeeper: "Lalji Pandey",
         Img: "image-url",
         ShopId: "DAL004",
@@ -37,7 +36,7 @@ class Order extends Component {
         Review: "104",
         Tag: ["Grocery", "Food"],
         Adress: "8584 W Sherman Dr undefined Desoto, Oklahoma, India",
-        Hours: "open",
+        opens: "9:00 AM",
         closes: "8:30 PM",
         Status: "Accepting List",
       },
@@ -112,7 +111,9 @@ class Order extends Component {
               ></MaterialCommunityIconsIcon>
             </Button>
             <View style={styles.storeNameParent}>
-              <Text style={styles.storeName}>{this.state.item.ShopName}</Text>
+              <Text style={styles.storeName}>
+                {this.state.shopInfo.ShopName}
+              </Text>
             </View>
           </View>
           <View
@@ -127,8 +128,8 @@ class Order extends Component {
           </View>
         </View>
 
-        <View style={{ marginTop: height / 3 - 25 - StatusBarHeight }}>
-          <ShopCard item={this.state.item} />
+        <View style={{ marginTop: height / 3 - 24 - StatusBarHeight }}>
+          <ShopProfileCard item={this.state.shopInfo} />
         </View>
         <View style={{ justifyContent: "flex-start" }}>
           <OrderList />
