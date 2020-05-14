@@ -27,8 +27,7 @@ import Constants from "expo-constants";
 import OrderList from "../../components/OrderList/OrderList";
 import { theme } from "../../constants";
 
-const StatusBarHeight = Constants.statusBarHeight;
-const HEADER_MAX_HEIGHT = 300;
+const HEADER_MAX_HEIGHT = 80;
 const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 73;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 class Order extends Component {
@@ -170,7 +169,6 @@ class Order extends Component {
           backgroundColor="rgba(0, 0, 0, 0.251)"
         />
         <Animated.ScrollView
-          //   style={[{ backgroundColor: "red" }]}
           scrollEventThrottle={1}
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
@@ -207,7 +205,7 @@ class Order extends Component {
             stylesNew.bar,
             {
               transform: [
-                { scale: titleScale },
+                // { scale: titleScale },
                 { translateY: titleTranslate },
               ],
             },
