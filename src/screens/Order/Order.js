@@ -4,10 +4,14 @@ import {
   FlatList,
   Image,
   Dimensions,
-  Animated,
   Modal,
   ScrollView,
   View,
+  Text,
+  Animated,
+  Platform,
+  StatusBar,
+  RefreshControl,
 } from "react-native";
 
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -17,12 +21,16 @@ import styles from "./styles";
 
 const { width, height } = Dimensions.get("window");
 
-import { Block, Text } from "../../components";
+import { Block } from "../../components";
 import ShopProfileCard from "../../components/ShopProfileCard/ShopProfileCard";
 import Constants from "expo-constants";
 import OrderList from "../../components/OrderList/OrderList";
+import { theme } from "../../constants";
 
 const StatusBarHeight = Constants.statusBarHeight;
+const HEADER_MAX_HEIGHT = 300;
+const HEADER_MIN_HEIGHT = Platform.OS === "ios" ? 60 : 73;
+const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 class Order extends Component {
   constructor(props) {
     super(props);
@@ -40,11 +48,16 @@ class Order extends Component {
         closes: "8:30 PM",
         Status: "Accepting List",
       },
+      scrollY: new Animated.Value(
+        // iOS has negative initial scroll value because content inset...
+        Platform.OS === "ios" ? -HEADER_MAX_HEIGHT : 0
+      ),
+      refreshing: false,
     };
   }
   scrollX = new Animated.Value(0);
 
-  renderIllustrations = () => {
+  renderIllustrations = (opacity, translate) => {
     const { illustrations } = this.props;
     return (
       <FlatList
@@ -58,10 +71,17 @@ class Order extends Component {
         extraDate={this.state}
         keyExtractor={(item, index) => `${item.id}`}
         renderItem={({ item }) => (
-          <Image
+          <Animated.Image
             source={item.source}
             resizeMode="cover"
-            style={{ width, height: height / 3, overflow: "visible" }}
+            style={[
+              { width, height: height / 3, overflow: "visible" },
+              styles.backgroundImage,
+              {
+                // opacity: opacity,
+                // transform: [{ translateY: translate }],
+              },
+            ]}
           />
         )}
         onScroll={Animated.event([
@@ -97,12 +117,102 @@ class Order extends Component {
     );
   };
 
+  _renderScrollViewContent(imgOpa, imgTra) {
+    return (
+      <View style={stylesNew.scrollViewContent}>
+        {this.renderIllustrations(imgOpa, imgTra)}
+        {this.renderSteps()}
+        <ShopProfileCard item={this.state.shopInfo} />
+        <OrderList />
+      </View>
+    );
+  }
+
   render() {
     const { navigation } = this.props;
+    const { illustrations } = this.props;
+    const scrollY = Animated.add(
+      this.state.scrollY,
+      Platform.OS === "ios" ? HEADER_MAX_HEIGHT : 0
+    );
+    const headerTranslate = scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE],
+      outputRange: [0, -HEADER_SCROLL_DISTANCE],
+      extrapolate: "clamp",
+    });
+
+    const imageOpacity = scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+      outputRange: [1, 1, 0],
+      extrapolate: "clamp",
+    });
+    const imageTranslate = scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE],
+      outputRange: [0, 100],
+      extrapolate: "clamp",
+    });
+
+    const titleScale = scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+      outputRange: [1, 1, 0.8],
+      extrapolate: "clamp",
+    });
+    const titleTranslate = scrollY.interpolate({
+      inputRange: [0, HEADER_SCROLL_DISTANCE / 2, HEADER_SCROLL_DISTANCE],
+      outputRange: [0, 0, -8],
+      extrapolate: "clamp",
+    });
     return (
-      <ScrollView>
-        <View style={styles.statusBar}></View>
-        <View style={styles.photos}>
+      <View>
+        <StatusBar
+          translucent
+          barStyle="light-content"
+          backgroundColor="rgba(0, 0, 0, 0.251)"
+        />
+        <Animated.ScrollView
+          //   style={[{ backgroundColor: "red" }]}
+          scrollEventThrottle={1}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+            { useNativeDriver: true }
+          )}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={() => {
+                this.setState({ refreshing: true });
+                setTimeout(() => this.setState({ refreshing: false }), 1000);
+              }}
+              progressViewOffset={HEADER_MAX_HEIGHT}
+            />
+          }
+          contentInset={{
+            top: HEADER_MAX_HEIGHT,
+          }}
+          contentOffset={{
+            y: -HEADER_MAX_HEIGHT,
+          }}
+        >
+          {this._renderScrollViewContent(imageOpacity, imageTranslate)}
+        </Animated.ScrollView>
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            stylesNew.header,
+            { transform: [{ translateY: headerTranslate }] },
+          ]}
+        ></Animated.View>
+        <Animated.View
+          style={[
+            stylesNew.bar,
+            {
+              transform: [
+                { scale: titleScale },
+                { translateY: titleTranslate },
+              ],
+            },
+          ]}
+        >
           <View style={styles.nameBar}>
             <Button transparent onPress={() => navigation.goBack()}>
               <MaterialCommunityIconsIcon
@@ -116,25 +226,8 @@ class Order extends Component {
               </Text>
             </View>
           </View>
-          <View
-            style={{
-              position: "absolute",
-              //   top: "-15%",
-              backgroundColor: "rgba(0, 0, 0, 0.4)",
-            }}
-          >
-            {this.renderIllustrations()}
-            {this.renderSteps()}
-          </View>
-        </View>
-
-        <View style={{ marginTop: height / 3 - 24 - StatusBarHeight }}>
-          <ShopProfileCard item={this.state.shopInfo} />
-        </View>
-        <View style={{ justifyContent: "flex-start" }}>
-          <OrderList />
-        </View>
-      </ScrollView>
+        </Animated.View>
+      </View>
     );
   }
 }
@@ -148,3 +241,57 @@ Order.defaultProps = {
 };
 
 export default Order;
+
+const stylesNew = StyleSheet.create({
+  fill: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+  },
+  header: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: theme.colors.primary,
+    // opacity: 0.5,
+    // overflow: "hidden",
+    height: HEADER_MAX_HEIGHT,
+  },
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    width: null,
+    height: HEADER_MAX_HEIGHT,
+    resizeMode: "cover",
+  },
+  bar: {
+    backgroundColor: "transparent",
+    marginTop: Platform.OS === "ios" ? 28 : 38,
+    height: 32,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+  title: {
+    color: "white",
+    fontSize: 18,
+  },
+  scrollViewContent: {
+    // iOS uses content inset, which acts like padding.
+    paddingTop: Platform.OS !== "ios" ? HEADER_MAX_HEIGHT : 0,
+  },
+  row: {
+    height: 40,
+    margin: 16,
+    backgroundColor: "#D3D3D3",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
