@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet, ImageBackground, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ImageBackground,
+  FlatList,
+} from "react-native";
 import { Card, Button } from "native-base";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -7,6 +14,7 @@ import { theme } from "../../constants";
 
 class ShopIdList extends Component {
   render() {
+    // navigation={navigation}
     return (
       <>
         <View style={styles.orderWrapper}>
@@ -16,7 +24,7 @@ class ShopIdList extends Component {
         <Button
           transparent
           style={styles.btnContact}
-          onPress={() => console.log("I'm pressed")}
+          onPress={() => this.props.navigation.navigate("Order")}
         >
           <Icon name="phone-outgoing" style={styles.iconCall}></Icon>
           <Text style={styles.btn_text}>Send List</Text>

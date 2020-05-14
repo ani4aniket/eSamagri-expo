@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   },
   iconWrapper: {
     flex: 1,
+    alignSelf: "baseline",
   },
 });
 

@@ -32,7 +32,10 @@ class ShopCard extends Component {
               <AddressHourStatus item={this.props.item} />
             </View>
             <View style={styles.row4}>
-              <ShopIdList item={this.props.item} />
+              <ShopIdList
+                item={this.props.item}
+                navigation={this.props.navigation}
+              />
             </View>
           </View>
         </View>

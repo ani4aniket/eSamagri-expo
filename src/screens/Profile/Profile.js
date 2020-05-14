@@ -36,6 +36,7 @@ class Profile extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
     const renderRow = data.map((item) => {
       return (
         <View style={styles.data_row} key={item.id}>
@@ -56,7 +57,7 @@ class Profile extends Component {
 
     return (
       <View style={styles.container}>
-        <HeaderBack heading="User Profile" />
+        <HeaderBack heading="User Profile" navigation={navigation} />
         <ScrollView>
           <Text style={styles.heading}>Profile Picture</Text>
 

@@ -48,7 +48,7 @@ class App extends React.Component {
         <Block white>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName="Order"
+              initialRouteName="Welcome"
               headerMode="none"
               screenOptions={{
                 headerStyle: {},

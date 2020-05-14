@@ -137,7 +137,9 @@ class Home extends Component {
             contentInset={{ top: 0, bottom: 20, left: 0, right: 0 }}
             contentInsetAdjustmentBehavior="automatic"
             data={data}
-            renderItem={({ item }) => <ShopCard item={item} />}
+            renderItem={({ item }) => (
+              <ShopCard item={item} navigation={navigation} />
+            )}
             keyExtractor={(item) => item.id}
           />
         </View>

@@ -13,6 +13,13 @@ import PopupMenu from "./PopUp";
 import { Text } from "../components";
 
 const AppHeader = (props) => {
+  const onPopupEvent = (eventName, index) => {
+    if (eventName !== "itemSelected") return;
+    if (index === 0) props.navigation.navigate("Profile");
+    if (index == 1) console.log(2);
+    if (index == 2) console.log(3);
+    //   else this.onRemove();
+  };
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -42,9 +49,7 @@ const AppHeader = (props) => {
         <View style={styles.popupMenu}>
           <PopupMenu
             actions={["Your Profile", "Share the app", "About Us"]}
-            onPress={() => {
-              console.log("hihi");
-            }}
+            onPress={onPopupEvent}
           />
         </View>
       </View>
