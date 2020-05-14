@@ -16,7 +16,6 @@ import { Block } from "./src/components";
 import Order from "./src/screens/Order/Order";
 import Profile from "./src/screens/Profile/Profile";
 import YourList from "./src/screens/YourList/YourList";
-import ScrollHeader from "./src/components/ScrollHeader/ScrollHeader";
 
 const Stack = createStackNavigator();
 
@@ -67,7 +66,6 @@ class App extends React.Component {
               <Stack.Screen name="Order" component={Order} />
               <Stack.Screen name="Profile" component={Profile} />
               <Stack.Screen name="YourList" component={YourList} />
-              <Stack.Screen name="ScrollHeader" component={ScrollHeader} />
             </Stack.Navigator>
           </NavigationContainer>
         </Block>
