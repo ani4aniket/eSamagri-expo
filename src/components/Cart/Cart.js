@@ -102,13 +102,14 @@ class Cart extends React.Component {
     const { cartItems, cartItemsIsLoading } = this.state;
 
     return (
-      <View style={{ flex: 1, backgroundColor: "#f6f6f6" }}>
+      <View style={{ flex: 1, backgroundColor: "transparent" }}>
         <View
           style={{
             flexDirection: "row",
             backgroundColor: "#fff",
-            marginBottom: 10,
             backgroundColor: "#5B7EFB",
+            borderTopRightRadius: 15,
+            borderTopLeftRadius: 15,
           }}
         >
           <View style={[styles.centerElement, { width: 50, height: 50 }]}>
@@ -126,7 +127,7 @@ class Cart extends React.Component {
             <ActivityIndicator size="large" color="#ef5739" />
           </View>
         ) : (
-          <ScrollView>
+          <ScrollView style={{ backgroundColor: "#f6f6f6" }}>
             {cartItems &&
               cartItems.map((item, i) => (
                 <View

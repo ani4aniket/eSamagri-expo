@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "transparent",
     alignItems: "center",
-    zIndex: 1,
   },
   storeName: {
     fontFamily: "Poppins-Regular",
