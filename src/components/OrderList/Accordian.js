@@ -11,6 +11,7 @@ import {
   Modal,
   Alert,
 } from "react-native";
+
 import { Colors } from "./colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
@@ -51,7 +52,24 @@ export default class Accordian extends Component {
         transparent={true}
         visible={this.state.modalVisible}
       >
-        <Cart done={this.setModalVisible} />
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            backgroundColor: "rgba(0, 0, 0,0.7)",
+          }}
+        >
+          <View
+            style={{
+              width: "100%",
+              height: "70%",
+            }}
+          >
+            <Cart done={this.setModalVisible} />
+          </View>
+        </View>
       </Modal>
     );
   };
